@@ -3,7 +3,7 @@ package config;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SdkConfigClassPathLoader  implements   SdkConfigCredentialProvider{
+public class ConfigServiceClassPathLoader implements ConfigServicePropertyProvider {
 
    //Default value for the class path
     private static String DEFAULT_PROPERTIES_FILE = "Couchbase.yml";
@@ -15,7 +15,7 @@ public class SdkConfigClassPathLoader  implements   SdkConfigCredentialProvider{
      * Customized value for loading.
      *
      */
-    public SdkConfigClassPathLoader(String credentialsFilePath){
+    public ConfigServiceClassPathLoader(String credentialsFilePath){
         if (credentialsFilePath == null)
             throw new IllegalArgumentException("Invalid Credential path");
 
@@ -28,12 +28,12 @@ public class SdkConfigClassPathLoader  implements   SdkConfigCredentialProvider{
         }
     }
 
-    public SdkConfigClassPathLoader(){
+    public ConfigServiceClassPathLoader(){
         this(DEFAULT_PROPERTIES_FILE);
     }
 
     @Override
-    public SdkConfigCredential getSdkConfigCredential() {
+    public ConfigServiceProperties getSdkConfigCredential() {
 
         InputStream inputStream = getClass().getResourceAsStream(credentialsFilePath);
         if (inputStream == null) {
@@ -41,7 +41,7 @@ public class SdkConfigClassPathLoader  implements   SdkConfigCredentialProvider{
         }
 
         try {
-            return new CredentialProperty(inputStream);
+            return new ConfigServicePropertyExtractor(inputStream);
         } catch (IOException e) {
             //TODO:: throw appropriate exception
         }

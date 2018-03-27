@@ -1,5 +1,5 @@
-import config.SdkConfigClassPathLoader;
-import config.SdkConfigCredentialProvider;
+import config.ConfigServiceClassPathLoader;
+import config.ConfigServicePropertyProvider;
 
 import java.util.logging.Logger;
 
@@ -11,7 +11,7 @@ public class ExampleConfig {
     public static void main(String[] args){
 
 
-        SdkConfigCredentialProvider  sdkConfigCredentialProvider = new SdkConfigClassPathLoader();
+        ConfigServicePropertyProvider sdkConfigCredentialProvider = new ConfigServiceClassPathLoader();
 
         if(sdkConfigCredentialProvider!= null){
 

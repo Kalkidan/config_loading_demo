@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 //Deals with credentials
-public class CredentialProperty implements SdkConfigCredential{
+public class ConfigServicePropertyExtractor implements ConfigServiceProperties {
 
     //
     private String host;
@@ -14,7 +14,7 @@ public class CredentialProperty implements SdkConfigCredential{
     //
     private String port;
 
-    public CredentialProperty(InputStream inputStream) throws IOException {
+    public ConfigServicePropertyExtractor(InputStream inputStream) throws IOException {
         Properties accountProperties = new Properties();
         try {
             accountProperties.load(inputStream);
