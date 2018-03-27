@@ -15,9 +15,9 @@ public class ExampleConfig {
 
         if(sdkConfigCredentialProvider!= null){
 
-            Logger.getLogger(LOGGER).info("The port is \t \t :" + sdkConfigCredentialProvider.getSdkConfigCredential().getPort());
-            Logger.getLogger(LOGGER).info("The port is \t \t :" + sdkConfigCredentialProvider.getSdkConfigCredential().getHost());
-            Logger.getLogger(LOGGER).info("The port is \t \t :" + sdkConfigCredentialProvider.getSdkConfigCredential().getBucketName());
+            Logger.getLogger(LOGGER).info("The port is \t \t " + sdkConfigCredentialProvider.getSdkConfigCredential().getPort());
+            Logger.getLogger(LOGGER).info("The host is \t \t " + sdkConfigCredentialProvider.getSdkConfigCredential().getHost());
+            Logger.getLogger(LOGGER).info("The bucket name is \t \t " + sdkConfigCredentialProvider.getSdkConfigCredential().getBucketName());
 
         }
     }
