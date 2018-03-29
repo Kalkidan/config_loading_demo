@@ -18,17 +18,19 @@ dependencies {
 
 task debugApp(type: War, dependsOn: classes) {
     webXml = file("config-debug/web.xml")
-    baseName = 'config'
+    baseName = 'config-debug'
 }
 
 task prodApp(type: War, dependsOn: classes) {
     webXml = file("config-prod/web.xml")
-    baseName = 'config'
+    baseName = 'config-prod'
 }
 
 task devApp(type: War, dependsOn: classes) {
     webXml = file("config-dev/web.xml")
-    baseName = 'config'
+    baseName = 'config-dev'
 }
+
+mainClassName = "config.com.kal.trial.Main"
 
 

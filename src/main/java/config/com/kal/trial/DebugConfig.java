@@ -29,13 +29,13 @@ public class DebugConfig extends HttpServlet{
         //
         Properties properties = new Properties();
         //
-        String propertyFileName = getServletContext().getInitParameter("debug");
+        String propertyFileName = this.getServletContext().getInitParameter("debug");
         //
         properties.load(getClass().getClassLoader().getResourceAsStream(propertyFileName));
         //
         Object myProperty = properties.getProperty("firstName");
         //
-        resp.getWriter().println("EmbeddedJetty yo yo ");
+        resp.getWriter().println("EmbeddedJetty Just Have fun");
         //
         resp.getWriter().println(myProperty);
 
