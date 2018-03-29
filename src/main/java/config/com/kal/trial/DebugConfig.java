@@ -1,14 +1,22 @@
 package config.com.kal.trial;
 
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.builder.fluent.Configurations;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class DebugConfig extends HttpServlet{
+
+    private static final String LOGGER = DebugConfig.class.getSimpleName();
 
     //
     @Override
@@ -26,6 +34,34 @@ public class DebugConfig extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpServletResponse.SC_OK);
+
+        long apacheReadingStart = System.nanoTime();
+        //
+        Configurations configs = new Configurations();
+        Configuration config = null;
+
+        //
+        try {
+             config = configs.properties(new File("Couchbase.yml"));
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        config.getString("host");
+        config.getString("port");
+        config.getString("bucketName");
+        String dateOfIssue = config.getString("dateOfIssue");
+        //
+        long apacheDifference = System.nanoTime() - apacheReadingStart;
+
+        //
+        if(config != null){}
+        resp.getWriter().println("The time elasped fetching data is: \t"  + "\t is\t"
+                + String.valueOf(apacheDifference/1000000000.0)+ "\t seconds \n" + dateOfIssue);
+
+        //
+        long nativeLoadingStart = System.nanoTime();
+
         //
         Properties properties = new Properties();
         //
@@ -33,11 +69,17 @@ public class DebugConfig extends HttpServlet{
         //
         properties.load(getClass().getClassLoader().getResourceAsStream(propertyFileName));
         //
-        Object myProperty = properties.getProperty("firstName");
+        properties.getProperty("host");
+        properties.getProperty("port");
+        properties.getProperty("bucketName");
+        String dateOfIssue1 = properties.getProperty("dateOfIssue");
         //
-        resp.getWriter().println("EmbeddedJetty Just Have fun");
+        long nativeLoadingDifference = System.nanoTime() - nativeLoadingStart;
+
         //
-        resp.getWriter().println(myProperty);
+        //
+        resp.getWriter().println("The time elasped fetching data is: \t" +
+                "\t is\t" + String.valueOf(nativeLoadingDifference/1000000000.0)+"\t seconds \t" + dateOfIssue1);
 
     }
 

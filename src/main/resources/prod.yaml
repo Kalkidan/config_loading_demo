@@ -1,2 +1,5 @@
-firstName: hello
-lastName: hey
+host: localhost
+port: 8091
+bucketName: sdkconfig
+
+

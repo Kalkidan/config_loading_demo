@@ -1,2 +1,9 @@
-firstName: Kalkidan
-lastName: Tadesse
+host: localhost
+port: 8091
+bucketName: sdkconfig
+
+key:
+  owner: Kalkidan
+  dateOfIssue: 03/28/2018
+  expirationDate: 03/29/2019
+
