@@ -19,25 +19,16 @@ dependencies {
 task debugApp(type: War, dependsOn: classes) {
     webXml = file("config-debug/web.xml")
     baseName = 'config'
-    manifest {
-        attributes('Main-Class': 'config.com.kal.trial.DebugConfig')
-    }
 }
 
 task prodApp(type: War, dependsOn: classes) {
     webXml = file("config-prod/web.xml")
     baseName = 'config'
-    manifest {
-        attributes('Main-Class': 'config.com.kal.trial.ProdConfig')
-    }
 }
 
 task devApp(type: War, dependsOn: classes) {
     webXml = file("config-dev/web.xml")
     baseName = 'config'
-    manifest {
-        attributes('Main-Class': 'config.com.kal.trial.DevConfig')
-    }
 }
 
 

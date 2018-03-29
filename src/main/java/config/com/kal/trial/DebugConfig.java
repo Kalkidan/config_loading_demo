@@ -35,7 +35,7 @@ public class DebugConfig extends HttpServlet{
         //
         Object myProperty = properties.getProperty("firstName");
         //
-        resp.getWriter().println("EmbeddedJetty");
+        resp.getWriter().println("EmbeddedJetty yo yo ");
         //
         resp.getWriter().println(myProperty);
 
