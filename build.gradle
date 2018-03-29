@@ -1,7 +1,7 @@
-group 'sdk_config_example'
-version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: "war"
+apply plugin: "application"
 
 sourceCompatibility = 1.8
 
@@ -9,6 +9,35 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation "javax.servlet:javax.servlet-api:3.1.0"
+    compile "org.eclipse.jetty:jetty-servlet:9+"
 }
+
+task debugApp(type: War, dependsOn: classes) {
+    webXml = file("config-debug/web.xml")
+    baseName = 'config'
+    manifest {
+        attributes('Main-Class': 'config.com.kal.trial.DebugConfig')
+    }
+}
+
+task prodApp(type: War, dependsOn: classes) {
+    webXml = file("config-prod/web.xml")
+    baseName = 'config'
+    manifest {
+        attributes('Main-Class': 'config.com.kal.trial.ProdConfig')
+    }
+}
+
+task devApp(type: War, dependsOn: classes) {
+    webXml = file("config-dev/web.xml")
+    baseName = 'config'
+    manifest {
+        attributes('Main-Class': 'config.com.kal.trial.DevConfig')
+    }
+}
+
+
