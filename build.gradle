@@ -46,8 +46,15 @@ task debugApp(type: War, dependsOn: classes) {
             '}'
     //
     String configFilePath = projectDir.getAbsolutePath() + '/src/main/java/config/com/kal/trial/DefaultConfiguration.java'
-    //
-    new File(configFilePath).write(defaultConfigurationFiles)
+
+    try {
+        //
+        new File(configFilePath).write(defaultConfigurationFiles)
+    } catch (Exception e){
+
+        //TODO::
+    }
+
 }
 
 task prodApp(type: War, dependsOn: classes) {
