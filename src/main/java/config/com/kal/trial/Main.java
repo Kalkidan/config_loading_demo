@@ -13,6 +13,5 @@ public class Main {
         server.setHandler(new DefaultHandler());
         server.start();
         server.join();
-
     }
 }

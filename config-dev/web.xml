@@ -21,10 +21,5 @@
 
   </servlet-mapping>
 
-  <context-param>
-    <param-name>dev</param-name>
-    <param-value>dev.yaml</param-value>
-  </context-param>
-
 </web-app>
 

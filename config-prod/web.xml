@@ -21,10 +21,5 @@
 
   </servlet-mapping>
 
-  <context-param>
-    <param-name>prod</param-name>
-    <param-value>prod.yaml</param-value>
-  </context-param>
-
 </web-app>
 

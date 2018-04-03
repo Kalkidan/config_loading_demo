@@ -21,10 +21,5 @@
 
   </servlet-mapping>
 
-  <context-param>
-    <param-name>debug</param-name>
-    <param-value>debug.yaml</param-value>
-  </context-param>
-
 </web-app>
 
