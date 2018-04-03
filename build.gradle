@@ -19,6 +19,7 @@ dependencies {
 }
 
 task debugApp(type: War, dependsOn: classes) {
+
     //
     webXml = file("config-debug/web.xml")
     //
@@ -58,4 +59,5 @@ task devApp(type: War, dependsOn: classes) {
 mainClassName = "config.com.kal.trial.Main"
 
 
+test.mustRunAfter clean
 debugApp.dependsOn test
