@@ -28,6 +28,12 @@ public class DebugConfig extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpServletResponse.SC_OK);
 
+        /**
+         *
+         * Below is a request-independent config file that is done
+         * in generated in a clean gradle way.
+         */
+
         //
         resp.getWriter().println(DefaultConfiguration.HOST);
         //

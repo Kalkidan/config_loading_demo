@@ -27,12 +27,16 @@ task debugApp(type: War, dependsOn: classes) {
     //
     def properties = new Properties()
     //
-    file("etc/verve/sdkconfig/qa.yaml").withInputStream { properties.load(it) }
-    //
+    file("etc/verve/sdkconfig/qa.yaml").withInputStream {
+        //load each of the props
+        properties.load(it)
+    }
+    //Get each of the props
     def host = properties.getProperty("host")
     def port = properties.getProperty("port")
     def bucketName = properties.getProperty("bucketName")
-    //
+
+    //Auto generate a java file
     String defaultConfigurationFiles = '\n /**This is auto Generated File, Don\'t modify manually !!!*/ \n' +
             'package config.com.kal.trial; \n \n \n' +
             'public class DefaultConfiguration {   \n \n' +
