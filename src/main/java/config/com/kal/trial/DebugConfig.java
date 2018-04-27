@@ -10,6 +10,10 @@ import java.io.IOException;
 public class DebugConfig extends HttpServlet{
 
     private static final String LOGGER = DebugConfig.class.getSimpleName();
+    private static final String COUCHBASE_PASSWORD = "COUCHBASE_PASSWORD";
+    private static final String COUCHBASE_USERNAME = "COUCHBASE_USERNAME";
+    private static final String COUCHBASE_PORT = "COUCHBASE_PORT";
+    private static final String COUCHBASE_HOST = "COUCHBASE_HOST";
 
     //
     @Override
@@ -27,19 +31,12 @@ public class DebugConfig extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpServletResponse.SC_OK);
+        //This is how we load the env file
+        resp.getWriter().println(System.getenv(COUCHBASE_PASSWORD));
+        resp.getWriter().println(System.getenv(COUCHBASE_USERNAME));
+        resp.getWriter().println(System.getenv(COUCHBASE_PORT));
+        resp.getWriter().println(System.getenv(COUCHBASE_HOST));
 
-        /**
-         *
-         * Below is a request-independent config file that is done
-         * in generated in a clean gradle way.
-         */
-
-        //
-        resp.getWriter().println(DefaultConfiguration.HOST);
-        //
-        resp.getWriter().println(DefaultConfiguration.PORT);
-        //
-        resp.getWriter().println(DefaultConfiguration.BUCKET_NAME);
     }
 
 

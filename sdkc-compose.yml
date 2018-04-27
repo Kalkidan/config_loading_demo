@@ -1,0 +1,30 @@
+version: '2'
+services:
+  couchbasedb:
+    image: couchbase
+    hostname: $COUCHBASE_HOST
+    container_name: $COUCHBASE_HOST
+    ports:
+      - 8091:$COUCHBASE_PORT
+      - 8092:8092
+      - 8093:8093
+      - 8094:8094
+      - 11210:11210
+    tty: true
+    networks:
+      - $NETWORK_NAME
+
+  sdkconfig:
+    image: sdkconfig-service
+    hostname: $SDKCONFIG_HOST
+    container_name: $SDKCONFIG_HOST
+    env_file: .env
+    ports:
+      - "8080:8080"
+    tty: true
+    networks:
+      - $NETWORK_NAME
+
+networks:
+  sdkc:
+    external: true
